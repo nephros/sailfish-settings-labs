@@ -29,8 +29,6 @@ Requires: %{name} = %{version}
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
-# On SailfishOS OBS, using tar_git, add the upstream submodule to the path:
-#%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 %qmake5
