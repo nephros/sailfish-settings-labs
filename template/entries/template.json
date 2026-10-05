@@ -2,13 +2,6 @@
     "translation_catalog": "settings-sailfish_labs",
     "entries": [
         {
-            "path": "system_settings/labs",
-            "title": "Labs",
-            "translation_id": "settings_system-labs",
-            "type": "section",
-            "order": 700
-        },
-        {
             "path": "system_settings/labs/template-app",
             "title": "LabTemplate",
             "translation_id": "labtemplate-entry_name",
