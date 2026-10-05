@@ -2,7 +2,7 @@ TEMPLATE=subdirs
 
 #SUBDIRS += template
 
-include(template/jolla-settings.pri)
+include(template/template.pri)
 
 readme.files += README.md
 readme.path = /usr/share/$${TARGET}
