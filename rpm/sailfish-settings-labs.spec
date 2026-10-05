@@ -27,6 +27,15 @@ Requires: %{name} = %{version}
 %description template
 %{summary}.
 
+%package all
+Summary:  Meta package to include all Settings Labs features
+Requires: %{name} = %{version}-%{release}
+Requires: %{name}-template
+
+%description all
+This package is here to include all Settings Labs
+features.
+
 %prep
 %autosetup -p1 -n %{name}-%{version}
 
@@ -48,3 +57,6 @@ Requires: %{name} = %{version}
 %dnl %dir %{_datadir}/%{name}/template
 %dnl %{_datadir}/%{name}/template/main.qml
 %dnl 
+
+%files all
+# Empty as this is meta package.
