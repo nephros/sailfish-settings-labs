@@ -9,6 +9,7 @@ Group:      Applications
 License:    BSD-3-Clause
 URL:        https://github.com/sailfishos/sailfish-settings-labs
 Source0:    %{name}-%{version}.tar.bz2
+BuildArch:  noarch
 
 Requires:   jolla-settings
 
