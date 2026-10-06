@@ -38,7 +38,9 @@ Page { id: root
             Repeater { // or ColumnView??
                 model: root.subcomponents
                 delegate: Loader {
-                    url: Qt.resolvedUrl("components" + modelData + ".qml")
+                    width: parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    source: Qt.resolvedUrl("components/" + modelData + ".qml")
                 }
             }
         }

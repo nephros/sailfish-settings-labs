@@ -67,7 +67,11 @@ features.
 
 %files gestures
 %{_datadir}/jolla-settings/entries/labs-gestures.json
-%{_datadir}/%{name}/gestures/
+%dir %{_datadir}/%{name}/gestures/
+%dir %{_datadir}/%{name}/gestures/components
+%{_datadir}/%{name}/gestures/gestures.qml
+%{_datadir}/%{name}/gestures/components/quickapptoggle.qml
+
 
 %files all
 # Empty as this is meta package.
