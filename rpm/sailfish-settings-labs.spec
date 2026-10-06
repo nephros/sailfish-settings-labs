@@ -20,13 +20,12 @@ BuildRequires:  qml-rpm-macros
 %description
 %{summary}.
 
-%package quick-app-toggle
-Summary: Quick App Switching Lab
+%package gestures
+Summary: Gestures Lab Components
 Requires: %{name} = %{version}
 
-%description quick-app-toggle
-Similar to pressing Alt + Tab on a desktop to switch to the previous app
-window. However, Quick App Switching can only jump to the previous app.
+%description gestures
+%{summary}.
 
 %package template
 Summary: Settings Labs Example
@@ -39,7 +38,7 @@ Requires: %{name} = %{version}
 Summary:  Meta package to include all Settings Labs features
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-template
-Requires: %{name}-quick-app-toggle
+Requires: %{name}-gestures
 
 %description all
 This package is here to include all Settings Labs
@@ -66,10 +65,9 @@ features.
 %dnl %dir %{_datadir}/%{name}/template
 %dnl %{_datadir}/%{name}/template/main.qml
 
-%files quick-app-toggle
-%{_datadir}/jolla-settings/entries/quick-app-toggle.json
-%{_datadir}/%{name}/quick-app-toggle/main.qml
-%dnl %{_datadir}/%{name}/quick-app-toggle/quickapptoggle.qml
+%files gestures
+%dnl %{_datadir}/jolla-settings/entries/gestures.json
+%{_datadir}/%{name}/gestures/
 
 %files all
 # Empty as this is meta package.
