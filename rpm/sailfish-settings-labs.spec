@@ -66,7 +66,7 @@ features.
 %dnl %{_datadir}/%{name}/template/main.qml
 
 %files gestures
-%dnl %{_datadir}/jolla-settings/entries/gestures.json
+%{_datadir}/jolla-settings/entries/labs-gestures.json
 %{_datadir}/%{name}/gestures/
 
 %files all

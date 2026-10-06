@@ -9,7 +9,7 @@
             "icon": "image://theme/icon-m-gesture",
             "order": 280,
             "params": {
-                "source": "/usr/share/sailfish-settings-labs/gestures/main.qml"
+                "source": "/usr/share/sailfish-settings-labs/gestures/gestures.qml"
             }
         }
     ]

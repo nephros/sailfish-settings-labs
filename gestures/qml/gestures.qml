@@ -7,7 +7,6 @@
 
 import QtQuick 2.1
 import Sailfish.Silica 1.0
-import "components"
 
 Page { id: root
 
@@ -39,6 +38,7 @@ Page { id: root
             Repeater { // or ColumnView??
                 model: root.subcomponents
                 delegate: Loader {
+                    url: Qt.resolvedUrl("components" + modelData + ".qml")
                 }
             }
         }
