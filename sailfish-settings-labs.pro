@@ -1,6 +1,8 @@
 TEMPLATE=subdirs
 
-#SUBDIRS += template
+SUBDIRS += \
+    gestures
+    quick-app-toggle
 
 include(template/template.pri)
 
