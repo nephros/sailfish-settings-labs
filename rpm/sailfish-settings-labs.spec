@@ -27,10 +27,18 @@ Requires: %{name} = %{version}
 %description template
 %{summary}.
 
+%package peekfilter
+Summary: Labs Edge Swipe
+Requires: %{name} = %{version}
+
+%description peekfilter
+%{summary}.
+
 %package all
 Summary:  Meta package to include all Settings Labs features
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-template
+Requires: %{name}-peekfilter
 
 %description all
 This package is here to include all Settings Labs
@@ -57,6 +65,14 @@ features.
 %dnl %dir %{_datadir}/%{name}/template
 %dnl %{_datadir}/%{name}/template/main.qml
 %dnl 
+
+%files peekfilter
+%{_datadir}/jolla-settings/entries/labs-peekfilter.json
+%{_datadir}/%{name}/peekfilter/peekfilter.qml
+%{_datadir}/%{name}/peekfilter/PeekSlider.qml
+%{_datadir}/translations/settings-sailfish-labs-peekfilter_eng_en.qm
+%exclude %{_datadir}/translations/source/*.ts
+
 
 %files all
 # Empty as this is meta package.
