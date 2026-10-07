@@ -24,6 +24,12 @@ Requires: %{name} = %{version}
 %description gestures
 %{summary}.
 
+%package ts-devel
+Summary: Translation source for Settings Labs Project
+
+%description ts-devel
+Translation source for Settings Labs Project
+
 %package all
 Summary:  Meta package to include all Settings Labs features
 Requires: %{name} = %{version}-%{release}
@@ -54,7 +60,10 @@ features.
 %dir %{_datadir}/%{name}/gestures/components
 %{_datadir}/%{name}/gestures/gestures.qml
 %{_datadir}/%{name}/gestures/components/quickapptoggle.qml
+%{_datadir}/translations/settings-sailfish-labs-gestures_eng_en.qm
 
+%files ts-devel
+%{_datadir}/translations/source/*.ts
 
 %files all
 # Empty as this is meta package.
