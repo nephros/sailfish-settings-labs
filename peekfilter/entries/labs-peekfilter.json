@@ -7,7 +7,7 @@
             "translation_id": "settings_display-he-peekfilter",
             "type": "page",
             "icon": "image://theme/icon-m-peekfilter",
-            "order": 280,
+            "order": 300,
             "params": {
                 "source": "/usr/share/sailfish-settings-labs/peekfilter/peekfilter.qml"
             }
