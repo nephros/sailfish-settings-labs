@@ -27,6 +27,7 @@ Summary:  Meta package to include all Settings Labs features
 BuildArch:  noarch
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-gestures
+Requires: %{name}-peekfilter
 
 %description all
 This package is here to include all Settings Labs
