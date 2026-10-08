@@ -3,7 +3,7 @@ Name: sailfish-settings-labs
 Summary:    Settings Labs Project
 Version:    0.1.0
 Release:    0
-License:    BSD-3-Clause
+License:    BSD-3-Clause and ASL 2.0
 URL:        https://github.com/sailfishos/sailfish-settings-labs
 Source0:    %{name}-%{version}.tar.bz2
 BuildArch:  noarch
