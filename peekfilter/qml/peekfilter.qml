@@ -12,9 +12,7 @@ Page {
         property string pagename: qsTrId("settings-sailfish-labs-peekfilter-page")
     }
 
-
-
-    property bool sliderDown: false
+    property bool sliderDown
 
     SilicaFlickable {
         anchors.fill: parent
@@ -23,31 +21,36 @@ Page {
         PullDownMenu {
             //% "Reset to default"
             //: menu entry
-            MenuItem { text: qsTrId("settings-sailfish-labs-peekfilter-menu-reset")
+            MenuItem {
+                text: qsTrId("settings-sailfish-labs-peekfilter-menu-reset")
                 onDelayedClick: {
                     // setting a dconf key to undefined should 'dconf reset' it.
-                    peekBoundary.value     = undefined;
+                    peekBoundary.value = undefined;
                     // close the page so the values are loaded again at next opening
                     pageStack.pop()
                 }
             }
         }
-        Column { id: column
-            width: page.width - Theme.horizontalPageMargin
+        Column {
+            id: column
+
+            width: page.width - Theme.horizontalPageMargin * 2
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: Theme.paddingMedium
 
-            //% "Swipe Edges"
-            //: Settings page title
             PageHeader {
+                //% "Swipe Edges"
+                //: Settings page title
                 title: qsTrId("settings-sailfish-labs-peekfilter-page-title")
-                 //% "Settings Labs"
+                //% "Settings Labs"
                 description: qsTrId("settings-sailfish-labs-name")
             }
 
-            //% "Edge Width"
-            //: section header
-            SectionHeader { text: qsTrId("settings-sailfish-labs-peekfilter-page-section-swipe") }
+            SectionHeader {
+                //% "Edge Width"
+                //: section header
+                text: qsTrId("settings-sailfish-labs-peekfilter-page-section-swipe")
+            }
 
             Label {
                 width: parent.width
@@ -69,8 +72,8 @@ Page {
                 height: Screen.height * factor
                 width: Screen.width * factor
                 color: "transparent"
-
                 radius: width / 10
+
                 Rectangle {
                     z: 15
                     clip: true
@@ -81,7 +84,6 @@ Page {
                     border.color: "black"
                     border.width:  Theme.paddingMedium
                     radius: width / 15
-
                 }
                 Image {
                     z: -1
@@ -130,7 +132,6 @@ Page {
                 //% "Careful: setting this too low will result in you not being able to swipe away applications at all."
                 text: qsTrId("settings-sailfish-labs-peekfilter-page-label-bottom")
             }
-
         }
     }
     /* page-level indicators of the edges, shown when the slider is down. */

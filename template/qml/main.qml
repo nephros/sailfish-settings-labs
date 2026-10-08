@@ -12,7 +12,7 @@ Page {
 
         ViewPlaceholder {
             enabled: true
-            //% "This is the Sailfish Labs™ Templace application"
+            //% "This is the Sailfish Labs™ Template application"
             text: qsTrId("labtemplate-placeholder-name")
         }
     }
