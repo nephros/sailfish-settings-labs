@@ -112,7 +112,6 @@ Page {
                 width: parent.width - Theme.itemSizeSmall
                 x: Theme.itemSizeSmall
                 wrapMode: Text.Wrap
-                color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 textFormat: Text.StyledText
                 //% "Careful: setting this too low will result in you not being able to swipe away applications at all."
