@@ -12,8 +12,6 @@ Page {
         property string pagename: qsTrId("settings-sailfish-labs-peekfilter-page")
     }
 
-    property bool sliderDown
-
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
@@ -108,7 +106,6 @@ Page {
                 value: peekBoundary.value
                 onDownChanged: {
                     if (!down) peekBoundary.value = Math.floor( ( boundary >= 1) ? boundary : 0 )
-                    sliderDown = down
                 }
             }
             Label {
@@ -125,7 +122,7 @@ Page {
     }
     /* page-level indicators of the edges, shown when the slider is down. */
     Rectangle {
-        visible: sliderDown
+        visible: slider.down
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         width: slider.value
@@ -133,7 +130,7 @@ Page {
         color: Theme.rgba(((width < Theme.paddingLarge/2) ? "red" : Theme.highlightColor), Theme.opacityFaint)
     }
     Rectangle {
-        visible: sliderDown
+        visible: slider.down
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         width: slider.value
