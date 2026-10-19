@@ -89,6 +89,15 @@ Page {
                     fillMode: Image.PreserveAspectCrop
                 }
                 Rectangle {
+                    visible: Screen.hasCutouts
+                    anchors.top: parent.top
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: Screen.topCutout.width * parent.factor
+                    height: (Screen.topCutout.height * parent.factor) *2/3
+                    color: "black"
+                    radius: width / 10
+                }
+                Rectangle {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     width: slider.value * parent.factor
