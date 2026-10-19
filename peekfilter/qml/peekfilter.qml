@@ -60,10 +60,7 @@ Page {
                 //% "The slider below allows to adjust the area of the screen recognized as an 'Edge Swipe' gesture (as opposed to a swipe within an app window)."
                 text: qsTrId("settings-sailfish-labs-peekfilter-page-label-top")
             }
-            Item {
-                height: Theme.paddingLarge
-                width: parent.width
-            }
+
             /* wallpaper image with small indicators of the edges.*/
             Rectangle {
                 property double factor: 0.3
@@ -111,10 +108,7 @@ Page {
                 }
 
             }
-            Item {
-                height: Theme.paddingLarge
-                width: parent.width
-            }
+
             PeekSlider { id: slider
                 value: peekBoundary.value
                 onDownChanged: {
