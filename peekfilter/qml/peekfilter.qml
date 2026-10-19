@@ -19,9 +19,9 @@ Page {
         contentHeight: column.height
 
         PullDownMenu {
-            //% "Reset to default"
-            //: menu entry
             MenuItem {
+                //% "Reset to default"
+                //: menu entry
                 text: qsTrId("settings-sailfish-labs-peekfilter-menu-reset")
                 onDelayedClick: {
                     // setting a dconf key to undefined should 'dconf reset' it.
