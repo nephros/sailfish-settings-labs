@@ -72,8 +72,6 @@ Page {
                 radius: width / 10
 
                 Rectangle {
-                    z: 15
-                    clip: true
                     anchors.centerIn: parent
                     width: parent.width + border.width * 2
                     height: parent.height + border.width * 2
@@ -83,7 +81,6 @@ Page {
                     radius: width / 15
                 }
                 Image {
-                    z: -1
                     anchors.fill: parent
                     anchors.centerIn: parent
                     source: Theme._homeBackgroundImage
@@ -91,7 +88,6 @@ Page {
                     fillMode: Image.PreserveAspectCrop
                 }
                 Rectangle {
-                    z: 10
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     width: slider.value * parent.factor
@@ -99,7 +95,6 @@ Page {
                     color: Theme.rgba(Theme.highlightColor, Theme.opacityFaint)
                 }
                 Rectangle {
-                    z: 10
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     width: slider.value * parent.factor
@@ -130,7 +125,6 @@ Page {
     }
     /* page-level indicators of the edges, shown when the slider is down. */
     Rectangle {
-        z: 10
         visible: sliderDown
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
@@ -139,7 +133,6 @@ Page {
         color: Theme.rgba(((width < Theme.paddingLarge/2) ? "red" : Theme.highlightColor), Theme.opacityFaint)
     }
     Rectangle {
-        z: 10
         visible: sliderDown
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
