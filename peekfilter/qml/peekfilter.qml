@@ -12,8 +12,6 @@ Page {
         property string pagename: qsTrId("settings-sailfish-labs-peekfilter-page")
     }
 
-    property bool sliderDown
-
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
@@ -25,7 +23,7 @@ Page {
                 text: qsTrId("settings-sailfish-labs-peekfilter-menu-reset")
                 onDelayedClick: {
                     // setting a dconf key to undefined should 'dconf reset' it.
-                    peekBoundary.value = undefined;
+                    peekBoundary.value = undefined
                     // close the page so the values are loaded again at next opening
                     pageStack.pop()
                 }
@@ -36,7 +34,6 @@ Page {
 
             width: page.width - Theme.horizontalPageMargin * 2
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: Theme.paddingMedium
 
             PageHeader {
                 //% "Swipe Edges"
@@ -61,7 +58,7 @@ Page {
                 text: qsTrId("settings-sailfish-labs-peekfilter-page-label-top")
             }
             Item {
-                height: Theme.paddingLarge
+                height: Theme.paddingLarge*2
                 width: parent.width
             }
             /* wallpaper image with small indicators of the edges.*/
@@ -75,8 +72,6 @@ Page {
                 radius: width / 10
 
                 Rectangle {
-                    z: 15
-                    clip: true
                     anchors.centerIn: parent
                     width: parent.width + border.width * 2
                     height: parent.height + border.width * 2
@@ -86,7 +81,6 @@ Page {
                     radius: width / 15
                 }
                 Image {
-                    z: -1
                     anchors.fill: parent
                     anchors.centerIn: parent
                     source: Theme._homeBackgroundImage
@@ -94,7 +88,15 @@ Page {
                     fillMode: Image.PreserveAspectCrop
                 }
                 Rectangle {
-                    z: 10
+                    visible: Screen.hasCutouts
+                    anchors.top: parent.top
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: Screen.topCutout.width * parent.factor
+                    height: (Screen.topCutout.height * parent.factor) *2/3
+                    color: "black"
+                    radius: width / 10
+                }
+                Rectangle {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     width: slider.value * parent.factor
@@ -102,7 +104,6 @@ Page {
                     color: Theme.rgba(Theme.highlightColor, Theme.opacityFaint)
                 }
                 Rectangle {
-                    z: 10
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     width: slider.value * parent.factor
@@ -112,21 +113,19 @@ Page {
 
             }
             Item {
-                height: Theme.paddingLarge
+                height: Theme.paddingLarge*2
                 width: parent.width
             }
             PeekSlider { id: slider
                 value: peekBoundary.value
                 onDownChanged: {
                     if (!down) peekBoundary.value = Math.floor( ( boundary >= 1) ? boundary : 0 )
-                    sliderDown = down
                 }
             }
             Label {
                 width: parent.width - Theme.itemSizeSmall
                 x: Theme.itemSizeSmall
                 wrapMode: Text.Wrap
-                color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeExtraSmall
                 textFormat: Text.StyledText
                 //% "Careful: setting this too low will result in you not being able to swipe away applications at all."
@@ -136,8 +135,7 @@ Page {
     }
     /* page-level indicators of the edges, shown when the slider is down. */
     Rectangle {
-        z: 10
-        visible: sliderDown
+        visible: slider.down
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         width: slider.value
@@ -145,8 +143,7 @@ Page {
         color: Theme.rgba(((width < Theme.paddingLarge/2) ? "red" : Theme.highlightColor), Theme.opacityFaint)
     }
     Rectangle {
-        z: 10
-        visible: sliderDown
+        visible: slider.down
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         width: slider.value
