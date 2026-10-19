@@ -1,5 +1,9 @@
 TEMPLATE=subdirs
 
+#SUBDIRS += template
+
+include(template/template.pri)
+
 readme.files += README.md
 readme.path = /usr/share/$${TARGET}
 INSTALLS += readme
