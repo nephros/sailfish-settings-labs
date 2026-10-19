@@ -34,7 +34,6 @@ Page {
 
             width: page.width - Theme.horizontalPageMargin * 2
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: Theme.paddingMedium
 
             PageHeader {
                 //% "Swipe Edges"
@@ -59,7 +58,7 @@ Page {
                 text: qsTrId("settings-sailfish-labs-peekfilter-page-label-top")
             }
             Item {
-                height: Theme.paddingLarge
+                height: Theme.paddingLarge*2
                 width: parent.width
             }
             /* wallpaper image with small indicators of the edges.*/
@@ -114,7 +113,7 @@ Page {
 
             }
             Item {
-                height: Theme.paddingLarge
+                height: Theme.paddingLarge*2
                 width: parent.width
             }
             PeekSlider { id: slider
