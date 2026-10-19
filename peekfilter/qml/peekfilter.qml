@@ -25,7 +25,7 @@ Page {
                 text: qsTrId("settings-sailfish-labs-peekfilter-menu-reset")
                 onDelayedClick: {
                     // setting a dconf key to undefined should 'dconf reset' it.
-                    peekBoundary.value = undefined;
+                    peekBoundary.value = undefined
                     // close the page so the values are loaded again at next opening
                     pageStack.pop()
                 }
