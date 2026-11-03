@@ -1,7 +1,8 @@
 TEMPLATE=subdirs
 
 SUBDIRS += \
-    gestures
+    gestures \
+    xdg-rotation
 
 include(template/template.pri)
 

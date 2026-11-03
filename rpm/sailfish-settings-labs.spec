@@ -24,6 +24,13 @@ Requires: %{name} = %{version}
 %description gestures
 %{summary}.
 
+%package xdg-output
+Summary: XDG-Output Lab Components
+Requires: %{name} = %{version}
+
+%description xdg-output
+%{summary}.
+
 %package ts-devel
 Summary: Translation source for Settings Labs Project
 
@@ -33,7 +40,7 @@ Translation source for Settings Labs Project
 %package all
 Summary:  Meta package to include all Settings Labs features
 Requires: %{name} = %{version}-%{release}
-Requires: %{name}-gestures
+Requires: %{name}-xdg-output
 
 %description all
 This package is here to include all Settings Labs
@@ -61,6 +68,10 @@ features.
 %{_datadir}/%{name}/gestures/gestures.qml
 %{_datadir}/%{name}/gestures/components/quickapptoggle.qml
 %{_datadir}/translations/settings-sailfish-labs-gestures_eng_en.qm
+
+%files xdg-output
+%{_datadir}/jolla-settings/entries/labs-xdg-output.json
+%{_datadir}/%{name}/xdg-output/main.qml
 
 %files ts-devel
 %{_datadir}/translations/source/*.ts
