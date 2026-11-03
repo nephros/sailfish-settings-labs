@@ -28,6 +28,7 @@ BuildArch:  noarch
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-gestures
 Requires: %{name}-peekfilter
+Requires: %{name}-xdg-output
 
 %description all
 This package is here to include all Settings Labs
@@ -49,6 +50,14 @@ BuildArch:  noarch
 Requires: %{name} = %{version}
 
 %description peekfilter
+%{summary}.
+
+%package xdg-output
+Summary: XDG-Output Lab Components
+BuildArch:  noarch
+Requires: %{name} = %{version}
+
+%description xdg-output
 %{summary}.
 
 %prep
@@ -88,5 +97,10 @@ Requires: %{name} = %{version}
 %dir %{_datadir}/%{name}/peekfilter
 %{_datadir}/%{name}/peekfilter/peekfilter.qml
 %{_datadir}/%{name}/peekfilter/PeekSlider.qml
+
+%files xdg-output
+%{_datadir}/jolla-settings/entries/labs-xdg-output.json
+%dir %{_datadir}/%{name}/xdg-output
+%{_datadir}/%{name}/xdg-output/main.qml
 
 # Add/remove subpackages below to ease merging

@@ -3,7 +3,8 @@ TEMPLATE=subdirs
 SUBDIRS += \
     plugin \
     gestures \
-    peekfilter
+    peekfilter \
+    xdg-rotation
 
 plugin_entry.path = /usr/share/jolla-settings/entries
 plugin_entry.files = sailfish-settings-labs.json
