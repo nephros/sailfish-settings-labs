@@ -2,7 +2,8 @@ TEMPLATE=subdirs
 
 SUBDIRS += \
     plugin \
-    gestures
+    gestures \
+    locale
 
 plugin_entry.path = /usr/share/jolla-settings/entries
 plugin_entry.files = sailfish-settings-labs.json

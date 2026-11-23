@@ -35,10 +35,20 @@ Summary:  Meta package to include all Settings Labs features
 BuildArch:  noarch
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-gestures
+Requires: %{name}-locale
 
 %description all
 This package is here to include all Settings Labs
 features.
+
+%package locale
+Summary: Locale Lab Components
+BuildArch:  noarch
+Requires: %{name} = %{version}
+
+%description locale
+%{summary}.
+
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
@@ -62,6 +72,9 @@ features.
 %files ts-devel
 %{_datadir}/translations/source/*.ts
 
+%files all
+# Empty as this is meta package.
+
 %files gestures
 %{_datadir}/jolla-settings/entries/labs-gestures.json
 %dir %{_datadir}/%{name}/gestures/
@@ -69,6 +82,10 @@ features.
 %{_datadir}/%{name}/gestures/gestures.qml
 %{_datadir}/%{name}/gestures/components/quickapptoggle.qml
 
+%files locale
+%{_datadir}/jolla-settings/entries/labs-locale.json
+%dir %{_datadir}/%{name}/locale/
+%{_datadir}/%{name}/locale/locale.qml
+%dnl %dir %{_datadir}/%{name}/gestures/components
+%dnl %{_datadir}/%{name}/gestures/components/quickapptoggle.qml
 
-%files all
-# Empty as this is meta package.
