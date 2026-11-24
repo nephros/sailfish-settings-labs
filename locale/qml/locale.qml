@@ -7,6 +7,7 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 //import Sailfish.Settings.Labs 1.0
+import com.jolla.settings.system 1.0
 import org.nemomobile.systemsettings 1.0
 
 Page {
@@ -60,6 +61,21 @@ Page {
 
     // signal languageClicked(string language, string locale)
 
+    property alias languageModel: languageModel
+
+    LanguageModel {
+        id: languageModel
+
+        includeCLocale: true
+
+        Component.onCompleted: {
+            var sections = getAdditionalLocaleSections()
+            console.debug("Sections:" , JSON.stringify(sections, null, 2))
+            sections.forEach(function(e) { root.lcSettings.append(e) })
+        }
+    }
+
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: content.height
@@ -87,23 +103,30 @@ Page {
                     ValueButton {
                         label: model.section + " " + model.name
                         value: model.value
-                        //onClicked: changeLocaleSection(model.section)
+                        onClicked: changeLocaleSection(model.section)
                     }
                 }
             }
         }
     }
 
-    LanguageModel {
-        id: languageModel
-
-        Component.onCompleted: {
-            var sections = getAdditionalLocaleSections()
-            console.debug("Sections:" , JSON.stringify(sections, null, 2))
-            sections.forEach(function(e) { root.lcSettings.append(e) })
-        }
+    function changeLocaleSection(idx, section) {
+        var picker = pageStack.push(languagePicker, { "languageModel": root.languageModel })
+        picker.languageClicked.connect(function(lang, newlocale) {
+            root.testingModel.setProperty(idx, "value", newlocale )
+            //picker.navigateBack()
+            pageStack.pop()
+        })
     }
 
-    function changeLocaleSection(section) {
+    Component {
+        id: languagePicker
+
+        LanguagePickerPage {
+            id: languagePicker
+            //Component.onCompleted: {
+            //    languagePicker.languageModel.insert(0, { "name": "C", "localeCode": "C", "region": "", "regionCode": "default/none" })
+            //}
+        }
     }
 }
