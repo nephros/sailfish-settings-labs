@@ -38,6 +38,11 @@ Page {
         }
     }
 
+    Connections {
+        target: FileEngine
+        onError: function(type, file) { console.debug("FileEngine Error:", type, file) }
+    }
+
     /* FIXME: we don't really parse the values here */
     function loadCurrentSettings() {
         root.configRead.connect(function(content) {
@@ -93,17 +98,21 @@ Page {
         if (fileContent.length > 0) {
             const payload = "### This file has been created by Jolla Settings Labs.\n### Please do not edit!\n#\n[Journal]\n"
                             + fileContent.join("\n")
-            console.debug("Created file payload:", payload)
+            console.debug("Created file payload:\n---", payload,  "\n---")
             if (!FileEngine.exists(configRoot+ "/" + configDir)) {
                 FileEngine.mkdir(configRoot, configDir)
                 console.debug("Created destination directory.")
-                if (FileEngine.exists(configRoot+ "/" + configDir)) {
-                    console.debug("Deleting old file.")
-                    FileEngine.fileDeleted.connect(function() { writeConfigFile(configFile, payload) } )
-                    FileEngine.deleteFiles( [ configFile ], false)
-                } else {
-                     writeConfigFile(configFile, payload, restart)
-                }
+            }
+            if (FileEngine.exists(configFile)) {
+                console.debug("Deleting old file.")
+                FileEngine.fileDeleted.connect(function() {
+                    console.debug("Proceeding to write file.")
+                    writeConfigFile(configFile, payload)
+                })
+                FileEngine.deleteFiles( [ configFile ], false)
+            } else {
+                 console.debug("Creating new file.")
+                 writeConfigFile(configFile, payload, restart)
             }
         }
     }
@@ -126,9 +135,13 @@ Page {
         console.debug("Writing config file:", path)
         const tmpname = ".settings-journald-" + Qt.md5(payload + Date.now());
         var tmpfile = writer.writeContentToFile ( { "name": tmpname, "type": "text/plain", "data": payload } );
+        console.debug("Wrote tmp file:", tmpfile)
         FileEngine.rename(tmpfile, path, false);
+        console.debug("Renamed tmp file to:", path)
         //FileEngine.copyFiles( [ tmpfile ] );
-        //FileEngine.pasteFiles(path, false);
+        //FileEngine.pasteFiles(configRoot + "/" + configDir, false);
+        //console.debug("Copied tmp file to:", path)
+        console.debug("Removing tmp file and dir.")
         writer.removeFilesAndRmdir( [ tmpfile ] );
         if (restart) restartJournalD();
 

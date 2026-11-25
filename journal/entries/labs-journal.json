@@ -9,6 +9,7 @@
             "icon": "image://theme/icon-m-diagnostic",
             "order": 290,
             "params": {
+                "privileged": "true",
                 "source": "/usr/share/sailfish-settings-labs/journal/journal.qml"
             }
         }
