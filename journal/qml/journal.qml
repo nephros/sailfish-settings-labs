@@ -16,11 +16,17 @@ import Nemo.DBus 2.0
 Page {
     id: root
 
-
     readonly property string configRoot: "/etc/systemd"
+    //readonly property string configRoot: "/run/systemd"
     readonly property string configDir: "journal.conf.d"
-    readonly property string configFile: configRoot + "/" + configDir + "/jolla-settings-labs-journal.conf"
-    readonly property string configFileDev: configRoot + "/" + configDir + "/jolla-settings-labs-journal-developer.conf"
+    /* man 5 journald.conf
+       It is recommended to use the range 10-40 for drop-ins in /usr/ and the
+       range 60-90 for drop-ins in /etc/ and /run/, to make sure that local and
+       transient drop-ins take priority over drop-ins shipped by the OS vendor.
+    */
+    readonly property string configPrefix: "60"
+    readonly property string configFile:    configRoot + "/" + configDir + "/" + configPrefix + "-jolla-settings-labs-journal.conf"
+    readonly property string configFileDev: configRoot + "/" + configDir + "/" + configPrefix + "-jolla-settings-labs-journal-developer.conf"
 
     property bool needsServiceRestart: false
 
@@ -32,6 +38,7 @@ Page {
         }
     }
 
+    /* FIXME: we don't really parse the values here */
     function loadCurrentSettings() {
         root.configRead.connect(function(content) {
             content.split("\n").forEach(function(line) {
@@ -84,7 +91,8 @@ Page {
         }
 
         if (fileContent.length > 0) {
-            const payload = "[Journal]\n" + fileContent.join("\n")
+            const payload = "### This file has been created by Jolla Settings Labs.\n### Please do not edit!\n#\n[Journal]\n"
+                            + fileContent.join("\n")
             console.debug("Created file payload:", payload)
             if (!FileEngine.exists(configRoot+ "/" + configDir)) {
                 FileEngine.mkdir(configRoot, configDir)
@@ -368,7 +376,8 @@ Page {
                     target: developerExtras.item
                     onLogToNetEnabled: { // TODO
                         if (enabled) {
-                            const payload = "[Journal]\nForwardToSocket=%1\n".arg(developerModeSettings.usbIpAddress + ":" + valueConfig.sendToNetPort)
+                            const payload = "### This file has been created by Jolla Settings Labs.\n### Please do not edit!\n#\n[Journal]\n"
+                                          + "ForwardToSocket=%1\n".arg(developerModeSettings.usbIpAddress + ":" + valueConfig.sendToNetPort)
                             root.writeConfigFile(configFileDev, payload, true)
                         } else {
                             FileEngine.deleteFiles( [ configFileDev ], false)
