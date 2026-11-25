@@ -1,0 +1,16 @@
+{
+    "translation_catalog": "settings-sailfish-labs",
+    "entries": [
+        {
+            "path": "system_settings/labs/journal",
+            "title": "Logging",
+            "translation_id": "settings_display-he-journal",
+            "type": "page",
+            "icon": "image://theme/icon-m-diagnostic",
+            "order": 290,
+            "params": {
+                "source": "/usr/share/sailfish-settings-labs/journal/journal.qml"
+            }
+        }
+    ]
+}

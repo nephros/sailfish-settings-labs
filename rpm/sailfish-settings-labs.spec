@@ -24,6 +24,15 @@ Requires: %{name} = %{version}
 %description gestures
 %{summary}.
 
+
+%package journal
+Summary: Journal Lab Components
+BuildArch:  noarch
+Requires: %{name} = %{version}
+
+%description journal
+%{summary}.
+
 %package ts-devel
 Summary: Translation source for Settings Labs Project
 
@@ -35,6 +44,7 @@ Summary:  Meta package to include all Settings Labs features
 BuildArch:  noarch
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-gestures
+Requires: %{name}-journal
 
 %description all
 This package is here to include all Settings Labs
@@ -69,6 +79,12 @@ features.
 %{_datadir}/%{name}/gestures/gestures.qml
 %{_datadir}/%{name}/gestures/components/quickapptoggle.qml
 
+%files journal
+%{_datadir}/jolla-settings/entries/labs-journal.json
+%dir %{_datadir}/%{name}/journal/
+%dir %{_datadir}/%{name}/journal/components
+%{_datadir}/%{name}/journal/journal.qml
+%{_datadir}/%{name}/journal/components/DeveloperModeExtras.qml
 
 %files all
 # Empty as this is meta package.
