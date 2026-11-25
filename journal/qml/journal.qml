@@ -18,7 +18,7 @@ Page {
 
     readonly property string configRoot: "/etc/systemd"
     //readonly property string configRoot: "/run/systemd"
-    readonly property string configDir: "journal.conf.d"
+    readonly property string configDir: "journald.conf.d"
     /* man 5 journald.conf
        It is recommended to use the range 10-40 for drop-ins in /usr/ and the
        range 60-90 for drop-ins in /etc/ and /run/, to make sure that local and
